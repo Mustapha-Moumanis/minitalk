@@ -6,55 +6,44 @@
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:40:35 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/28 01:25:56 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/01/29 16:49:46 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-void print_bits(unsigned char octet)
+void	ft_send_bit(int pid, char c)
 {
-	int	i = 8;
-	unsigned char 	bit;
+	int	i;
 
-	while (i--)
-	{
-		bit = (octet >> i & 1) + '0';
-		write(1, &bit, 1);
-	}
-}
-
-unsigned char swap_bits(unsigned char octet)
-{
-	return ((octet >> 4) | (octet << 4));
-}
-
-void	ft_send_msg(char  c, int pid)
-{
+	i = 7;
 	(void)pid;
-	print_bits(c);
-	write(1, "\n", 1);
-	print_bits(swap_bits(c));
-
-	// kill();
+	while (i >= 0)
+	{
+		if (c & (1 << i))
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		i--;
+		usleep(500);
+	}
 }
 
 int main(int argc, char **argv)
 {
-	int     pid;
-	int     i;
-	char    *str;
+	int		i;
+	int		pid;
+	char	*str;
 	
-	i = 0;
 	if (argc == 3)
 	{
+		i = 0;
 		pid = ft_atoi(argv[1]);
 		str = argv[2];
 		while (str[i])
 		{
-			ft_send_msg(str[i], pid);
-			i++;
+			ft_send_bit(pid, str[i]);
+			i++;	
 		}
-		
 	}
 }

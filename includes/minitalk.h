@@ -6,7 +6,7 @@
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:41:11 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/27 22:18:11 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/01/29 19:30:38 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <signal.h>
 #include <unistd.h>
+#include <sys/wait.h>
 
 int	ft_atoi(const char *str);
 
