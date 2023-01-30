@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:40:35 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/30 20:17:17 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/01/30 20:50:02 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
 #include "../includes/minitalk_bonus.h"
 
 int	check_pid(char *str)
@@ -45,6 +44,12 @@ void	ft_send_bit(int pid, char c)
 	}
 }
 
+void	print_chila3ba(int sig)
+{
+	(void)sig;
+	write (1, "chila3ba\n", 10);
+}
+
 int main(int argc, char **argv)
 {
 	int		i;
@@ -54,6 +59,7 @@ int main(int argc, char **argv)
 	if (argc == 3)
 	{
 		i = 0;
+
 		if (!check_pid(argv[1]) || !argv[2][0])
 			ft_error("invalid pid or empty arg\n");
 		pid = ft_atoi(argv[1]);
@@ -63,6 +69,8 @@ int main(int argc, char **argv)
 		while (str[i])
 		{
 			ft_send_bit(pid, str[i]);
+			signal(SIGUSR2, print_chila3ba);
+			pause();
 			i++;
 		}
 		ft_send_bit(pid, '\n');

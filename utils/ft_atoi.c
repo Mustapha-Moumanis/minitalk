@@ -6,11 +6,12 @@
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:04:21 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/27 21:53:55 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:43:39 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
 static int	ft_white_space(const char *str, int i)
 {

@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 21:41:11 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/30 19:14:58 by mmoumani         ###   ########.fr       */
+/*   Created: 2022/10/05 15:18:02 by mmoumani          #+#    #+#             */
+/*   Updated: 2023/01/30 15:09:24 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
-#include <stdio.h>
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
-
-int	    ft_atoi(const char *str);
-int	    ft_putnbr(int n, int i);
-int	    ft_putchar(char c);
-int	    ft_isdigit(int c);
-void    ft_error(char   *str);
-size_t	ft_strlen(const char *str);
-
-#endif
+int	ft_isdigit(int c)
+{
+	return ((c >= '0' && c <= '9'));
+}

@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/27 21:41:11 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/30 19:14:58 by mmoumani         ###   ########.fr       */
+/*   Created: 2022/11/07 21:11:56 by mmoumani          #+#    #+#             */
+/*   Updated: 2023/01/30 14:43:06 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-#define MINITALK_H
+#include "../includes/minitalk.h"
+#include "../includes/minitalk_bonus.h"
 
-#include <stdio.h>
-#include <signal.h>
-#include <unistd.h>
-#include <stdlib.h>
+int	ft_putnbr(int n, int i)
+{
+	long	temp;
 
-int	    ft_atoi(const char *str);
-int	    ft_putnbr(int n, int i);
-int	    ft_putchar(char c);
-int	    ft_isdigit(int c);
-void    ft_error(char   *str);
-size_t	ft_strlen(const char *str);
-
-#endif
+	if (n < 0)
+	{
+		i += ft_putchar('-');
+		temp = (-(long) n);
+	}
+	else
+		temp = n;
+	if (temp < 10)
+		ft_putchar(temp + '0');
+	else
+	{
+		i += ft_putnbr(temp / 10, 1);
+		ft_putchar(temp % 10 + '0');
+	}
+	return (i);
+}
