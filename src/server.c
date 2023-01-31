@@ -6,7 +6,7 @@
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:40:32 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/30 20:24:13 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/01/31 08:24:31 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,19 @@ void	print_msg(int sig)
 	c <<= 1;
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	int pid;
-	
+	int	pid;
+
 	(void)argv;
 	if (argc != 1)
-		ft_error("you don't need arguments here\n");
+		ft_error("You need no arguments here.\n");
 	pid = getpid();
+	write (1, "PID : ", 7);
 	ft_putnbr(pid, 1);
 	ft_putchar('\n');
 	signal(SIGUSR1, print_msg);
 	signal(SIGUSR2, print_msg);
 	while (1)
-	{
 		pause();
-	}
 }
