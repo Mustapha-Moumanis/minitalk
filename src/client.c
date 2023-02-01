@@ -6,7 +6,7 @@
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:40:35 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/31 08:23:21 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/02/01 19:56:14 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	ft_send_bit(int pid, char c)
 		else
 			kill(pid, SIGUSR2);
 		i--;
-		usleep(500);
+		usleep(200);
 	}
 }
 

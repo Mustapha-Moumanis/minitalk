@@ -6,7 +6,7 @@
 /*   By: mmoumani <mmoumani@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 21:40:32 by mmoumani          #+#    #+#             */
-/*   Updated: 2023/01/31 08:28:42 by mmoumani         ###   ########.fr       */
+/*   Updated: 2023/02/01 20:07:54 by mmoumani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,13 @@ void	print_msg(int sig, struct __siginfo *info, void *test)
 	if (i++ == 7)
 	{
 		ft_putchar(c);
-		usleep(1000);
-		kill(info->si_pid, SIGUSR2);
 		i = 0;
 		c = 0;
+	}
+	if (i == 0)
+	{
+		usleep(1000);
+		kill(info->si_pid, SIGUSR2);
 	}
 	c <<= 1;
 }
@@ -40,6 +43,8 @@ int	main(int argc, char **argv)
 	if (argc != 1)
 		ft_error("You need no arguments here.\n");
 	rest.sa_sigaction = print_msg;
+	rest.sa_flags = SA_SIGINFO;
+	sigemptyset(&rest.sa_mask);
 	pid = getpid();
 	write (1, "PID : ", 7);
 	ft_putnbr(pid, 1);
